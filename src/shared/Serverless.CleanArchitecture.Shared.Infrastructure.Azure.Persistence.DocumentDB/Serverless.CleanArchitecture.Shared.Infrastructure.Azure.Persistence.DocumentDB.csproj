@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);NU1605</NoWarn>
+  </PropertyGroup>
+
+  <Import Project="..\..\build\targets\common.infrastructure.targets" />
+
+  <ItemGroup>
+    <None Include="..\..\build\analyzers\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />
+    <!-- https://learn.microsoft.com/en-us/answers/questions/1162985/inject-entityframework-dbcontext-in-a-net-6-azure?page=1 -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="7.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\Serverless.CleanArchitecture.Core.Application\Serverless.CleanArchitecture.Core.Application.csproj" />
+    <ProjectReference Include="..\..\core\Serverless.CleanArchitecture.Core.Domain\Serverless.CleanArchitecture.Core.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

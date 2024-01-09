@@ -1,0 +1,6 @@
+<Project>
+  <Import Project=".\analysis.targets" />
+  <Import Project=".\common.targets" />
+  <ItemGroup>
+  </ItemGroup>
+</Project>

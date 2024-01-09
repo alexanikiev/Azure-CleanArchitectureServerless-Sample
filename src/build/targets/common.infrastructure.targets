@@ -1,0 +1,11 @@
+<Project>
+  <Import Project=".\analysis.targets" />
+  <Import Project=".\common.targets" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.4" />
+    <!-- https://learn.microsoft.com/en-us/answers/questions/1164048/windows-10-net-6-or-net-7-runtime-getting-error-co -->
+    <!-- https://github.com/Azure/Azure-Functions/issues/2319 -->
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
+  </ItemGroup>
+</Project>

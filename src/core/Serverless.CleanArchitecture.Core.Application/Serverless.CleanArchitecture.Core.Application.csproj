@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);NU1605</NoWarn>
+  </PropertyGroup>
+
+  <Import Project="..\..\build\targets\common.application.targets" />
+
+  <ItemGroup>
+    <None Include="..\..\build\analyzers\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Serverless.CleanArchitecture.Core.Domain\Serverless.CleanArchitecture.Core.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

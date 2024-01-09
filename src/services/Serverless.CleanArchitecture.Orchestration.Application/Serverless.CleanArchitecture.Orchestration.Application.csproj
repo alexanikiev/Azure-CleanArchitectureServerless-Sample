@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);NU1605</NoWarn>
+  </PropertyGroup>
+
+  <Import Project="..\..\build\targets\common.application.targets" />
+
+  <ItemGroup>
+    <None Include="..\..\build\analyzers\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\Serverless.CleanArchitecture.Core.Application\Serverless.CleanArchitecture.Core.Application.csproj" />
+    <ProjectReference Include="..\..\core\Serverless.CleanArchitecture.Core.Domain\Serverless.CleanArchitecture.Core.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

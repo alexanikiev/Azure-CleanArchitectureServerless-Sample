@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <NoWarn>$(NoWarn);NU1605</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" /> -->
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
+    <!-- <PackageReference Include="coverlet.collector" Version="3.1.2" /> -->
+  </ItemGroup>
+
+  <Import Project="..\..\build\targets\analysis.targets" />
+  <Import Project="..\..\build\targets\common.targets" />
+  <Import Project="..\..\build\targets\common.tests.targets" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\services\Serverless.CleanArchitecture.Orchestration.Application\Serverless.CleanArchitecture.Orchestration.Application.csproj" />
+  </ItemGroup>
+
+</Project>

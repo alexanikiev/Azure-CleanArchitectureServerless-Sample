@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Serverless.CleanArchitecture.Orchestration.Host.Function": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7177",
+      "launchBrowser": false
+    }
+  }
+}

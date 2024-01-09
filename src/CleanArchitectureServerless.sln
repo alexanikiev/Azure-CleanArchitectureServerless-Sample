@@ -1,0 +1,106 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{91A66229-9422-44A0-9FAE-F81865E5E674}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serverless.CleanArchitecture.Core.Application", "core\Serverless.CleanArchitecture.Core.Application\Serverless.CleanArchitecture.Core.Application.csproj", "{55B32F3F-FD0B-4DA1-BBCB-9289688A5B29}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serverless.CleanArchitecture.Core.Domain", "core\Serverless.CleanArchitecture.Core.Domain\Serverless.CleanArchitecture.Core.Domain.csproj", "{1C4CE4D0-C92D-4093-BE7C-F2C07406B50C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{8D3694F6-38A1-41C1-8A50-4F48C9FC2541}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serverless.CleanArchitecture.Orchestration.Application", "services\Serverless.CleanArchitecture.Orchestration.Application\Serverless.CleanArchitecture.Orchestration.Application.csproj", "{A062FE34-0998-41B1-A262-EF66370FEBCB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serverless.CleanArchitecture.Orchestration.Host.Function", "services\Serverless.CleanArchitecture.Orchestration.Host.Function\Serverless.CleanArchitecture.Orchestration.Host.Function.csproj", "{A1A620FC-DA81-4F63-AC59-F6B15E084695}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{CCF4CE35-98AA-4F37-BD59-F5408BF53D4D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serverless.CleanArchitecture.Shared.Host.Function", "shared\Serverless.CleanArchitecture.Shared.Host.Function\Serverless.CleanArchitecture.Shared.Host.Function.csproj", "{DD72B64E-B0BA-4575-B83B-E6188210EEC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serverless.CleanArchitecture.Shared.Infrastructure.Azure", "shared\Serverless.CleanArchitecture.Shared.Infrastructure.Azure\Serverless.CleanArchitecture.Shared.Infrastructure.Azure.csproj", "{169A9155-97B1-4601-B3FF-97E439D23457}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.DocumentDB", "shared\Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.DocumentDB\Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.DocumentDB.csproj", "{E12BDA26-CD28-46D1-846B-410B920B0895}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{83E498AC-DA48-47C0-94E9-37C13837B69B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serverless.CleanArchitecture.Orchestration.Application.Tests", "test\Serverless.CleanArchitecture.Orchestration.Application.Tests\Serverless.CleanArchitecture.Orchestration.Application.Tests.csproj", "{F4665DD7-E465-46B7-A7BE-7A8F6A3B2D00}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{C86D0BEA-E578-49AA-88BF-4E11E648C376}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "analyzers", "analyzers", "{B645EF86-77F0-402A-B0F6-5F5B44298C87}"
+	ProjectSection(SolutionItems) = preProject
+		build\analyzers\default.ruleset = build\analyzers\default.ruleset
+		build\analyzers\editorconfig = build\analyzers\editorconfig
+		build\analyzers\stylecop.json = build\analyzers\stylecop.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "targets", "targets", "{778FC9C2-920F-42D8-8864-289639B3EAFB}"
+	ProjectSection(SolutionItems) = preProject
+		build\targets\analysis.targets = build\targets\analysis.targets
+		build\targets\common.application.targets = build\targets\common.application.targets
+		build\targets\common.host.targets = build\targets\common.host.targets
+		build\targets\common.infrastructure.targets = build\targets\common.infrastructure.targets
+		build\targets\common.targets = build\targets\common.targets
+		build\targets\common.tests.targets = build\targets\common.tests.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55B32F3F-FD0B-4DA1-BBCB-9289688A5B29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55B32F3F-FD0B-4DA1-BBCB-9289688A5B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55B32F3F-FD0B-4DA1-BBCB-9289688A5B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55B32F3F-FD0B-4DA1-BBCB-9289688A5B29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C4CE4D0-C92D-4093-BE7C-F2C07406B50C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4CE4D0-C92D-4093-BE7C-F2C07406B50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4CE4D0-C92D-4093-BE7C-F2C07406B50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4CE4D0-C92D-4093-BE7C-F2C07406B50C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A062FE34-0998-41B1-A262-EF66370FEBCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A062FE34-0998-41B1-A262-EF66370FEBCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A062FE34-0998-41B1-A262-EF66370FEBCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A062FE34-0998-41B1-A262-EF66370FEBCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1A620FC-DA81-4F63-AC59-F6B15E084695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A620FC-DA81-4F63-AC59-F6B15E084695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A620FC-DA81-4F63-AC59-F6B15E084695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A620FC-DA81-4F63-AC59-F6B15E084695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD72B64E-B0BA-4575-B83B-E6188210EEC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD72B64E-B0BA-4575-B83B-E6188210EEC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD72B64E-B0BA-4575-B83B-E6188210EEC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD72B64E-B0BA-4575-B83B-E6188210EEC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{169A9155-97B1-4601-B3FF-97E439D23457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{169A9155-97B1-4601-B3FF-97E439D23457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{169A9155-97B1-4601-B3FF-97E439D23457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{169A9155-97B1-4601-B3FF-97E439D23457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E12BDA26-CD28-46D1-846B-410B920B0895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E12BDA26-CD28-46D1-846B-410B920B0895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E12BDA26-CD28-46D1-846B-410B920B0895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E12BDA26-CD28-46D1-846B-410B920B0895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4665DD7-E465-46B7-A7BE-7A8F6A3B2D00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4665DD7-E465-46B7-A7BE-7A8F6A3B2D00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4665DD7-E465-46B7-A7BE-7A8F6A3B2D00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4665DD7-E465-46B7-A7BE-7A8F6A3B2D00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{55B32F3F-FD0B-4DA1-BBCB-9289688A5B29} = {91A66229-9422-44A0-9FAE-F81865E5E674}
+		{1C4CE4D0-C92D-4093-BE7C-F2C07406B50C} = {91A66229-9422-44A0-9FAE-F81865E5E674}
+		{A062FE34-0998-41B1-A262-EF66370FEBCB} = {8D3694F6-38A1-41C1-8A50-4F48C9FC2541}
+		{A1A620FC-DA81-4F63-AC59-F6B15E084695} = {8D3694F6-38A1-41C1-8A50-4F48C9FC2541}
+		{DD72B64E-B0BA-4575-B83B-E6188210EEC0} = {CCF4CE35-98AA-4F37-BD59-F5408BF53D4D}
+		{169A9155-97B1-4601-B3FF-97E439D23457} = {CCF4CE35-98AA-4F37-BD59-F5408BF53D4D}
+		{E12BDA26-CD28-46D1-846B-410B920B0895} = {CCF4CE35-98AA-4F37-BD59-F5408BF53D4D}
+		{F4665DD7-E465-46B7-A7BE-7A8F6A3B2D00} = {83E498AC-DA48-47C0-94E9-37C13837B69B}
+		{B645EF86-77F0-402A-B0F6-5F5B44298C87} = {C86D0BEA-E578-49AA-88BF-4E11E648C376}
+		{778FC9C2-920F-42D8-8864-289639B3EAFB} = {C86D0BEA-E578-49AA-88BF-4E11E648C376}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5FAC6663-CD09-4371-8265-603E413B2099}
+	EndGlobalSection
+EndGlobal
