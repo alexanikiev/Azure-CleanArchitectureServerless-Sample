@@ -1,0 +1,62 @@
+# CD pipeline
+# Deploy ASP.NET Core projects as a part of the Release process.
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts?view=azure-devops&tabs=yaml
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/webapp?view=azure-devops&tabs=yaml
+
+trigger: none
+
+pr: none
+
+resources:
+  pipelines:
+    - pipeline: artifacts
+      source: CI
+      trigger:
+        branches:
+          - main
+
+pool:
+  vmImage: 'windows-latest'
+
+parameters:
+  - name: 'buildPipelineDefinitionId'
+    default: 'xyz' # CI PipelineID
+    type: string
+
+  - name: 'azureSubscription'
+    default: 'MyServiceConnection'
+    type: string
+
+  - name: 'funcAppName'
+    default: 'myfuncapp-dev'
+    type: string
+
+variables:
+  buildConfiguration: 'Release'
+  artifactName: 'myfuncapp-dev-build'
+
+jobs:
+  - job: Deploy
+
+    steps:
+      - task: DownloadPipelineArtifact@2
+        displayName: Download artifact myfuncapp-dev
+        inputs:
+          buildType: 'specific'
+          specificBuildWithTriggering: true
+          project: '$(System.TeamProjectId)'
+          definition: ${{ parameters.buildPipelineDefinitionId }}
+          buildVersionToDownload: 'latest'
+          allowPartiallySucceededBuilds: true
+          artifactName: $(artifactName)
+          targetPath: '$(Pipeline.Workspace)'
+
+      - task: AzureRmWebAppDeployment@4
+        displayName: Deploy myfuncapp-dev
+        inputs:
+          ConnectionType: 'AzureRM'
+          azureSubscription: ${{ parameters.azureSubscription }}
+          appType: 'functionApp'
+          WebAppName: ${{ parameters.funcAppName }}
+          packageForLinux: '$(Pipeline.Workspace)/**/*.zip'

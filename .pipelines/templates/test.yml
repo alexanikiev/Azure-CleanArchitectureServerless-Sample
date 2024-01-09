@@ -1,0 +1,20 @@
+parameters:
+  - name: 'buildConfiguration'
+    default: Release
+    type: string
+
+  - name: 'testCoverageType'
+    default: 'XPlat Code Coverage'
+    type: string
+
+  - name: 'testProjectsPath'
+    default: '**/*Tests/*.csproj'
+    type: string
+
+steps:
+  - task: DotNetCoreCLI@2
+    displayName: dotnet test for myfuncapp-dev
+    inputs:
+        command: test
+        projects: '${{ parameters.testProjectsPath }}'
+        arguments: '--configuration ${{ parameters.buildConfiguration }} --collect "${{ parameters.testCoverageType }}"'

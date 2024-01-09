@@ -1,0 +1,12 @@
+steps:
+  - bash: |
+        dotnet tool install --global dotnet-reportgenerator-globaltool
+        reportgenerator -reports:"$(Agent.TempDirectory)/*/coverage.cobertura.xml" -targetdir:"$(Build.ArtifactStagingDirectory)/CodeCoverageResults" -sourcedirs:"$(Build.SourcesDirectory)/src/" -reporttypes:"Cobertura" -verbosity:Verbose
+    displayName: Install Report Generator tool and generate Code Coverage Report
+
+  - task: PublishCodeCoverageResults@1
+    displayName: Publish Code Coverage
+    inputs:
+        codeCoverageTool: "Cobertura"
+        summaryFileLocation: "$(Build.ArtifactStagingDirectory)/CodeCoverageResults/Cobertura.xml"
+        pathToSources: "$(System.DefaultWorkingDirectory)/src"

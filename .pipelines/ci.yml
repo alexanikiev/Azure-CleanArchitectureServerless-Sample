@@ -1,0 +1,55 @@
+# CI pipeline
+# Build, test and publish ASP.NET Core projects as a part of the Build process.
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/dotnet-core?view=azure-devops&tabs=dotnetfive
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts?view=azure-devops&tabs=yaml
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - src/build/analyzers/*
+      - src/build/targets/*
+      - src/core/*
+      - src/services/Serverless.CleanArchitecture.Orchestration.Application/*
+      - src/services/Serverless.CleanArchitecture.Orchestration.Host.Function/*
+      - src/shared/*
+
+pr: none
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  testCoverageType: 'XPlat Code Coverage'
+  artifactName: 'myfuncapp-dev-build'
+
+jobs:
+  - job: Build_Test_Publish
+
+    steps:
+      - task: DotNetCoreCLI@2
+        displayName: dotnet publish for myfuncapp-dev
+        inputs:
+          command: publish
+          zipAfterPublish: True
+          publishWebProjects: False
+          projects: '$(Build.SourcesDirectory)/src/services/Serverless.CleanArchitecture.Orchestration.Host.Function/Serverless.CleanArchitecture.Orchestration.Host.Function.csproj'
+          arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+
+      - template: /.pipelines/templates/test.yml
+        parameters:
+          buildConfiguration: $(buildConfiguration)
+          testCoverageType: $(testCoverageType)
+
+      - template: /.pipelines/templates/cobertura.yml
+
+      - task: PublishPipelineArtifact@1
+        displayName: Create pipeline artifact for myfuncapp-dev
+        condition: or(eq(variables['Build.SourceBranch'], 'refs/heads/main'), eq(variables['Build.Reason'], 'Manual'))
+        inputs:
+          targetPath: '$(Build.ArtifactStagingDirectory)' 
+          artifactName: $(artifactName)
