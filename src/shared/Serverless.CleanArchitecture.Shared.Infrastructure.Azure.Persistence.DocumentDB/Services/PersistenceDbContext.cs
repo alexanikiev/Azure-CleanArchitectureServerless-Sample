@@ -1,17 +1,8 @@
 ﻿// Copyright (c) 2024 alexanikiev.dev.
 
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Serverless.CleanArchitecture.Core.Application.Services;
 using Serverless.CleanArchitecture.Core.Domain.Entities;
-using System.Linq;
-using System.Collections.Generic;
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Numerics;
 
 namespace Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.DocumentDB.Services
 {
@@ -40,6 +31,14 @@ namespace Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.D
         public async Task<int> SaveChangesAsync()
         {
             return await base.SaveChangesAsync();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<MyTrans>()
+                .HasNoDiscriminator()
+                .ToContainer("MyTrans")
+                .HasPartitionKey(o => o.MyId);
         }
     }
 }

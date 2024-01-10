@@ -1,8 +1,6 @@
 ﻿// Copyright (c) 2024 alexanikiev.dev.
 
-using System;
 using AutoMapper;
-using Azure.Messaging.EventGrid.SystemEvents;
 
 namespace Serverless.CleanArchitecture.Orchestration.Host.Function.Mappers
 {

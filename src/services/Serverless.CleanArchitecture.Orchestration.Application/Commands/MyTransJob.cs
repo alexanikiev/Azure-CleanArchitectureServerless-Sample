@@ -1,15 +1,11 @@
 ﻿// Copyright (c) 2024 alexanikiev.dev.
 
-using System.Threading;
-using System.Threading.Tasks;
 using Ardalis.GuardClauses;
 using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Serverless.CleanArchitecture.Core.Application.Handlers;
 using Serverless.CleanArchitecture.Core.Application.Services;
-using Serverless.CleanArchitecture.Core.Domain.DTO.Notifications;
-using Serverless.CleanArchitecture.Core.Domain.Entities;
 using Serverless.CleanArchitecture.Core.Domain.Models;
 
 namespace Serverless.CleanArchitecture.Orchestration.Application.Commands

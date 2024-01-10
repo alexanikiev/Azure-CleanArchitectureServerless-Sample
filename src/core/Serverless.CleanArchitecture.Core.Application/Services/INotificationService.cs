@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2024 alexanikiev.dev.
 
-using System.Threading.Tasks;
 using Serverless.CleanArchitecture.Core.Domain.Models;
 
 namespace Serverless.CleanArchitecture.Core.Application.Services

@@ -1,15 +1,10 @@
 ﻿// Copyright (c) 2024 alexanikiev.dev.
 
-using System.Collections.Concurrent;
 using System.Reflection;
-using Azure.Messaging.EventGrid;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Serverless.CleanArchitecture.Core.Application.Services;
 using Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Mappers;
-using Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Models.Configuration;
-using Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Services;
 
 namespace Serverless.CleanArchitecture.Shared.Infrastructure.Azure
 {

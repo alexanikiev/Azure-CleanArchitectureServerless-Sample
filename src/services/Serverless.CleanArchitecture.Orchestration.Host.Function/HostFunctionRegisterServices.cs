@@ -5,8 +5,8 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serverless.CleanArchitecture.Core.Application;
-using Serverless.CleanArchitecture.Orchestration.Host.Function.Mappers;
 using Serverless.CleanArchitecture.Orchestration.Application;
+using Serverless.CleanArchitecture.Orchestration.Host.Function.Mappers;
 using Serverless.CleanArchitecture.Shared.Infrastructure.Azure;
 using Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.DocumentDB;
 
