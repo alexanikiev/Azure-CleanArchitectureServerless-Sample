@@ -1,10 +1,9 @@
 ﻿// Copyright (c) 2024 alexanikiev.dev.
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Serverless.CleanArchitecture.Core.Application.Services;
+using Serverless.CleanArchitecture.Core.Application.Services.Persistence;
 using Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.DocumentDB.Services;
 
 namespace Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.DocumentDB
@@ -21,7 +20,12 @@ namespace Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.D
         /// <param name="configuration">The configuration.</param>
         public static void AddSharedInfrastructureAzurePersistenceDocumentDB(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
-            // TODO:
+            serviceCollection.AddDbContext<PersistenceDbContext>(options =>
+            {
+                options.UseCosmos(configuration["CosmosDbEndpointUrl"], configuration["CosmosDbPrimaryKey"], configuration["CosmosDbDatabaseName"]);
+            });
+
+            serviceCollection.AddScoped<IMyTransService, MyTransService>();
         }
     }
 }

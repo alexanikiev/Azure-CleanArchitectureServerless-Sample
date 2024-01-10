@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2024 alexanikiev.dev.
 
-using System;
 using AutoMapper;
 using Serverless.CleanArchitecture.Core.Domain.DTO.Notifications;
 using Serverless.CleanArchitecture.Core.Domain.Models;

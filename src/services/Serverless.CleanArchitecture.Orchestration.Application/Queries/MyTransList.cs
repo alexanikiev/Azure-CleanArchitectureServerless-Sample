@@ -1,17 +1,14 @@
 ﻿// Copyright (c) 2024 alexanikiev.dev.
 
-using System.Threading;
-using System.Threading.Tasks;
 using Ardalis.GuardClauses;
 using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Serverless.CleanArchitecture.Core.Application.Handlers;
 using Serverless.CleanArchitecture.Core.Application.Services;
-using Serverless.CleanArchitecture.Core.Domain.DTO.Notifications;
 using Serverless.CleanArchitecture.Core.Domain.Entities;
 using Serverless.CleanArchitecture.Core.Domain.Models;
-using System.Collections.Generic;
+using Serverless.CleanArchitecture.Core.Application.Services.Persistence;
 
 namespace Serverless.CleanArchitecture.Orchestration.Application.Queries
 {
@@ -25,34 +22,37 @@ namespace Serverless.CleanArchitecture.Orchestration.Application.Queries
         public class Handler : RequestHandlerBase, IRequestHandler<Query, Result>
         {
             private readonly IPersistenceDbContext dbContext;
+            private readonly IMyTransService myTransService;
             private readonly ILogger<Handler> logger;
 
             public Handler(
                 IPersistenceDbContext dbContext,
+                IMyTransService myTransService,
                 IMediator mediator,
                 IMapper mapper,
                 ILogger<Handler> logger)
                 : base(mediator, mapper)
             {
                 this.dbContext = dbContext;
+                this.myTransService = myTransService;
                 this.logger = logger;
             }
 
             public async Task<Result> Handle(Query query, CancellationToken cancellationToken)
             {
                 Guard.Against.Null(query, nameof(query));
-                Guard.Against.NegativeOrZero(query.Id, nameof(query.Id));
+                //Guard.Against.NullOrEmpty(query.MyId, nameof(query.MyId));
 
-                List<MyTrans> MyTrans = new List<MyTrans>();
-
-                // TODO:
-
-                return (Result)MyTrans;
+                return new Result()
+                {
+                    Records = await this.myTransService.ReadAllMyTransAsync(),
+                };
             }
         }
 
         public class Result : List<MyTrans>
         {
+            public List<MyTrans>? Records { get; set; }
         }
     }
 }

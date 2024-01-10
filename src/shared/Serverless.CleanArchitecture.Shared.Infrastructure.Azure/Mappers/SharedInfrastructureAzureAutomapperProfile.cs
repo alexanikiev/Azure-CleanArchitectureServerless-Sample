@@ -1,8 +1,6 @@
 ﻿// Copyright (c) 2024 alexanikiev.dev.
 
-using System;
 using AutoMapper;
-using Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Models.Commands;
 
 namespace Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Mappers
 {

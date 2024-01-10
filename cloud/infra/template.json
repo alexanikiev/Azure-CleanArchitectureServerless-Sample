@@ -1,0 +1,189 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "subscriptionId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "use32BitWorkerProcess": {
+      "type": "bool"
+    },
+    "ftpsState": {
+      "type": "string"
+    },
+    "storageAccountName": {
+      "type": "string"
+    },
+    "netFrameworkVersion": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "skuCode": {
+      "type": "string"
+    },
+    "workerSize": {
+      "type": "string"
+    },
+    "workerSizeId": {
+      "type": "string"
+    },
+    "numberOfWorkers": {
+      "type": "string"
+    },
+    "hostingPlanName": {
+      "type": "string"
+    },
+    "serverFarmResourceGroup": {
+      "type": "string"
+    },
+    "alwaysOn": {
+      "type": "bool"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "apiVersion": "2018-11-01",
+      "name": "[parameters('name')]",
+      "type": "Microsoft.Web/sites",
+      "kind": "functionapp",
+      "location": "[parameters('location')]",
+      "tags": {
+        "hidden-link: /app-insights-resource-id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/mycleanarchitecture_group/providers/Microsoft.Insights/components/mycleanarchitecture')]"
+      },
+      "dependsOn": [
+        "microsoft.insights/components/mycleanarchitecture",
+        "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]"
+      ],
+      "properties": {
+        "name": "[parameters('name')]",
+        "siteConfig": {
+          "appSettings": [
+            {
+              "name": "FUNCTIONS_EXTENSION_VERSION",
+              "value": "~4"
+            },
+            {
+              "name": "FUNCTIONS_WORKER_RUNTIME",
+              "value": "dotnet"
+            },
+            {
+              "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+              "value": "[reference('microsoft.insights/components/mycleanarchitecture', '2015-05-01').ConnectionString]"
+            },
+            {
+              "name": "AzureWebJobsStorage",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
+            },
+            {
+              "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
+            },
+            {
+              "name": "WEBSITE_CONTENTSHARE",
+              "value": "[concat('mycleanarchitecture', uniqueString(resourceGroup().id, parameters('name')))]"
+            }
+          ],
+          "cors": {
+            "allowedOrigins": [
+              "https://portal.azure.com"
+            ]
+          },
+          "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]",
+          "ftpsState": "[parameters('ftpsState')]",
+          "netFrameworkVersion": "[parameters('netFrameworkVersion')]"
+        },
+        "clientAffinityEnabled": false,
+        "virtualNetworkSubnetId": null,
+        "publicNetworkAccess": "Enabled",
+        "httpsOnly": true,
+        "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
+      }
+    },
+    {
+      "apiVersion": "2018-11-01",
+      "name": "[parameters('hostingPlanName')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[parameters('location')]",
+      "kind": "",
+      "tags": {},
+      "dependsOn": [],
+      "properties": {
+        "name": "[parameters('hostingPlanName')]",
+        "workerSize": "[parameters('workerSize')]",
+        "workerSizeId": "[parameters('workerSizeId')]",
+        "numberOfWorkers": "[parameters('numberOfWorkers')]"
+      },
+      "sku": {
+        "Tier": "[parameters('sku')]",
+        "Name": "[parameters('skuCode')]"
+      }
+    },
+    {
+      "apiVersion": "2020-02-02-preview",
+      "name": "mycleanarchitecture",
+      "type": "microsoft.insights/components",
+      "location": "eastus",
+      "tags": {},
+      "dependsOn": [
+        "newWorkspaceTemplate"
+      ],
+      "properties": {
+        "ApplicationId": "[parameters('name')]",
+        "Request_Source": "IbizaWebAppExtensionCreate",
+        "Flow_Type": "Redfield",
+        "Application_Type": "web",
+        "WorkspaceResourceId": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/DefaultResourceGroup-EUS/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-', subscription().subscriptionId, '-EUS')]"
+      }
+    },
+    {
+      "apiVersion": "2022-05-01",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[parameters('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "tags": {},
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "properties": {
+        "supportsHttpsTrafficOnly": true,
+        "minimumTlsVersion": "TLS1_2",
+        "defaultToOAuthAuthentication": true
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "newWorkspaceTemplate",
+      "resourceGroup": "DefaultResourceGroup-EUS",
+      "subscriptionId": "[parameters('subscriptionId')]",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {},
+          "variables": {},
+          "resources": [
+            {
+              "apiVersion": "2020-08-01",
+              "name": "[concat('DefaultWorkspace-', subscription().subscriptionId, '-EUS')]",
+              "type": "Microsoft.OperationalInsights/workspaces",
+              "location": "eastus",
+              "properties": {}
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
