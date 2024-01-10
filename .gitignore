@@ -4,6 +4,31 @@
 
 /.vs
 
-
 /src/.vs
-/src/core/Serverless.CleanArchitecture.Core.Application/bin/Debug/net6.0
+
+/src/core/Serverless.CleanArchitecture.Core.Application/bin
+/src/core/Serverless.CleanArchitecture.Core.Application/obj
+
+/src/core/Serverless.CleanArchitecture.Core.Domain/bin
+/src/core/Serverless.CleanArchitecture.Core.Domain/obj
+
+/src/services/Serverless.CleanArchitecture.Orchestration.Application/bin
+/src/services/Serverless.CleanArchitecture.Orchestration.Application/obj
+
+/src/shared/Serverless.CleanArchitecture.Shared.Host.Function/bin
+/src/shared/Serverless.CleanArchitecture.Shared.Host.Function/obj
+
+/src/shared/Serverless.CleanArchitecture.Shared.Infrastructure.Azure/bin
+/src/shared/Serverless.CleanArchitecture.Shared.Infrastructure.Azure/obj
+
+/src/shared/Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.DocumentDB/bin
+/src/shared/Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.DocumentDB/obj
+
+/src/shared/Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.SQLDB/bin
+/src/shared/Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.SQLDB/obj
+
+/src/shared/Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Cache.Redis/bin
+/src/shared/Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Cache.Redis/obj
+
+/src/test/Serverless.CleanArchitecture.Orchestration.Application.Tests/bin
+/src/test/Serverless.CleanArchitecture.Orchestration.Application.Tests/obj
