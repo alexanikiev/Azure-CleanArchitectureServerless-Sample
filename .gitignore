@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+
+
+/src/.vs
+/src/core/Serverless.CleanArchitecture.Core.Application/bin/Debug/net6.0
