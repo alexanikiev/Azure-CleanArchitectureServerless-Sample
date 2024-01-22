@@ -27,13 +27,13 @@ namespace Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.D
 
         public async Task AddMyTransAsync(MyTrans myTrans)
         {
-            _context.MyTrans.Add(myTrans);
+            await _context.MyTrans.AddAsync(myTrans);
             await _context.SaveChangesAsync();
         }
 
         public async Task AddMyTransArrayAsync(MyTrans[] myTransArray)
         {
-            _context.MyTrans.AddRange(myTransArray);
+            await _context.MyTrans.AddRangeAsync(myTransArray);
             await _context.SaveChangesAsync();
         }
     }

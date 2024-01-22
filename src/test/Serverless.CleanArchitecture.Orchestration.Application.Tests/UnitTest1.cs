@@ -1,3 +1,6 @@
+// Copyright (c) 2024 alexanikiev.dev.
+
+/*
 namespace Serverless.CleanArchitecture.Orchestration.Application.Tests
 {
     [TestClass]
@@ -9,3 +12,4 @@ namespace Serverless.CleanArchitecture.Orchestration.Application.Tests
         }
     }
 }
+*/

@@ -25,7 +25,8 @@ namespace Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.D
         }
 
         /// <inheritdoc/>
-        public DbSet<MyTrans> MyTrans { get; set; }
+        //public DbSet<MyTrans> MyTrans { get; set; }
+        public virtual DbSet<MyTrans> MyTrans { get; set; }
 
         /// <inheritdoc/>
         public async Task<int> SaveChangesAsync()
