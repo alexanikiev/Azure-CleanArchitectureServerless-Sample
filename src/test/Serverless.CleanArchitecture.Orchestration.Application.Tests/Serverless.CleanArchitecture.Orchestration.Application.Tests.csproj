@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\services\Serverless.CleanArchitecture.Orchestration.Application\Serverless.CleanArchitecture.Orchestration.Application.csproj" />
+    <ProjectReference Include="..\..\shared\Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.DocumentDB\Serverless.CleanArchitecture.Shared.Infrastructure.Azure.Persistence.DocumentDB.csproj" />
   </ItemGroup>
 
 </Project>
