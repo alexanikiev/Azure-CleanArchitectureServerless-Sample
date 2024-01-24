@@ -37,7 +37,7 @@ Please see the list below to the core architecturals principles and design patte
 
 The details of the Technical Architecture for this template are described [here](https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/).
 
-![Clean Architecture](/docs/images/clean_architecture.png)
+![Clean Architecture](/docs/images/clean_architecture2.png)
 
 **Domain-Driven Design**: Domain-Driven Design (DDD) is a collection of principles and patterns that help developers craft elegant object systems. Properly applied it can lead to software abstractions called Domain Models. These models encapsulate complex business logic, closing the gap between business reality and code.
 
@@ -119,13 +119,13 @@ curl --location 'http://localhost:port/api/MyTransDocumentDBTrigger'
 ```
 
 Solution structure for this template lools like this:
-![Clean Architecture Solution Structure](/docs/images/clean_architecture_solution_structure.png)
+![Clean Architecture Solution Structure](/docs/images/clean_architecture_solution_structure2.png)
 
 For clarity the following diagram shows the dependencies between the projects in the solution:
-![Clean Architecture Project Dependencies](/docs/images/clean_architecture_project_dependencies.png)
+![Clean Architecture Project Dependencies](/docs/images/clean_architecture_project_dependencies2.png)
 
-To illustrate the execution process on an example of EventGridTrigger and how solution components are connected the following diagram is provided:
-![Clean Architecture Sample Execution Process](/docs/images/clean_architecture_eventgrid_process.png)
+To illustrate the execution process on an example of HttpTrigger (query) and how solution components are connected the following diagram is provided:
+![Clean Architecture Sample Execution Process](/docs/images/clean_architecture_httptrigger_query_process.png)
 
 ## Cloud Deployment
 
